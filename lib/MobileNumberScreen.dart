@@ -26,7 +26,7 @@ class _MobileNumberScreen extends State<MobileNumberScreen> {
           children: <Widget>[
             RichText(
               text: TextSpan(
-                text: 'Enter Mobile Number',
+                text: mobile_number_title_text,
 //                style: GoogleFonts.lato(fontStyle: FontStyle.normal),
                 style: TextStyle(
                     color: const Color(0xff5c5bb0),
@@ -51,8 +51,7 @@ class _MobileNumberScreen extends State<MobileNumberScreen> {
               child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text:
-                      'Enter your phone number, We will send an SMS message to verify your phone number.',
+                  text: mobile_number_subtitle_text,
                   style: TextStyle(
                       color: Colors.grey[500],
                       fontWeight: FontWeight.w400,
@@ -69,7 +68,7 @@ class _MobileNumberScreen extends State<MobileNumberScreen> {
               duration: Duration(milliseconds: 300),
               inputType: TextInputType.text,
               prefixIcon: Icon(Icons.phone_iphone),
-              placeholder: mobileNumberPlaceholder,
+              placeholder: mobile_number_title_text,
               fontFamily:'Open Sans',
               fontStyle: FontStyle.normal,
               //textColor: Colors.black,
