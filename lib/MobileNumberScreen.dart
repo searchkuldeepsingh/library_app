@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:libraryapp/helpers/Constants.dart';
-import 'package:libraryapp/beauty_textfield/beauty_textfield.dart';
+import 'MobileOtpScreen.dart';
+import 'helpers/Constants.dart';
+import 'beauty_textfield/beauty_textfield.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MobileNumberScreen extends StatefulWidget {
@@ -15,10 +16,6 @@ class _MobileNumberScreen extends State<MobileNumberScreen> {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
-//      appBar: AppBar(
-//        title: Text('Sign In'),
-//        backgroundColor: Colors.white,
-//      ),
       body: Container(
         padding: EdgeInsets.only(top: 60),
         child: Column(
@@ -29,7 +26,7 @@ class _MobileNumberScreen extends State<MobileNumberScreen> {
                 text: mobile_number_title_text,
 //                style: GoogleFonts.lato(fontStyle: FontStyle.normal),
                 style: TextStyle(
-                    color: const Color(0xff5c5bb0),
+                    color: appBaseThemeColor,
                     fontWeight: FontWeight.w900,
                     fontStyle: FontStyle.normal,
                     fontFamily: 'Open Sans',
@@ -46,19 +43,33 @@ class _MobileNumberScreen extends State<MobileNumberScreen> {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(20),
-              height: 80,
+              constraints: const BoxConstraints(maxWidth: 300),
+              margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
               child: RichText(
                 textAlign: TextAlign.center,
-                text: TextSpan(
-                  text: mobile_number_subtitle_text,
-                  style: TextStyle(
-                      color: Colors.grey[500],
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                      fontFamily: 'Open Sans',
-                      fontSize: 13),
-                ),
+                text: TextSpan(children: <TextSpan>[
+                  TextSpan(
+                      text: 'We will send you an ',
+                      style: TextStyle(color: Colors.grey[500],
+                          fontStyle: FontStyle.normal,
+                          fontFamily: 'Open Sans',
+                          fontSize: 12)),
+                  TextSpan(
+                      text: 'One Time Password ',
+                      style: TextStyle(
+                          color: appBaseThemeColor,
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.normal,
+                          fontFamily: 'Open Sans',
+                          fontSize: 14)),
+                  TextSpan(
+                      text: 'on this mobile number.',
+                      style: TextStyle(
+                          color: Colors.grey[500],
+                          fontStyle: FontStyle.normal,
+                          fontFamily: 'Open Sans',
+                          fontSize: 12)),
+                ]),
               ),
             ),
             BeautyTextfield(
@@ -69,7 +80,7 @@ class _MobileNumberScreen extends State<MobileNumberScreen> {
               inputType: TextInputType.text,
               prefixIcon: Icon(Icons.phone_iphone),
               placeholder: mobile_number_title_text,
-              fontFamily:'Open Sans',
+              fontFamily: 'Open Sans',
               fontStyle: FontStyle.normal,
               //textColor: Colors.black,
               onTap: () {
@@ -89,17 +100,21 @@ class _MobileNumberScreen extends State<MobileNumberScreen> {
               width: 180,
               child: RaisedButton(
                 child: Text(
-                  "Send",
+                  button_send_title,
                   style: TextStyle(fontSize: 14.0),
                 ),
                 onPressed: () {
                   /*...*/
-                  print('Send button Pressed');
+                  print('$button_send_title button Pressed');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MobileOtpScreen()));
                 },
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
-                color: const Color(0xff5c5bb0),
+                color: appBaseThemeColor,
                 textColor: Colors.white,
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
               ),
